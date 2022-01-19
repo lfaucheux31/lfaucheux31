@@ -2,31 +2,8 @@
 
 - hosts: all
 
-# Prompt for Username and Password #
-  vars_prompt:
-    - name: Windows_User_Prompt
-      prompt: "Enter Windows Username"
-      private: no
-    - name: Windows_Password_Prompt
-      prompt: "Enter Windows Password"
-      private: yes      
-
 # Ansible tasks #
   tasks:
-
-# Register User Name #
-    - set_fact:
-        windows_user: "{{ Windows_User_Prompt }}"        
-      no_log: true
-      delegate_to: localhost
-      run_once: true 
-
-# Register Password #
-    - set_fact:        
-        windows_password: "{{ Windows_Password_Prompt }}"
-      no_log: true
-      delegate_to: localhost
-      run_once: true   
 
 # Gather Ansible Facts About Host #
     - name: Gather Ansible Facts About Host
